@@ -1,0 +1,102 @@
+<template>
+  <button class="btn btn-primary" click.delegate="randomize()">Assign Random Values</button>
+  <button class="btn btn-info" click.delegate="assignNull()">Assign Null</button>
+  <button class="btn btn-info" click.delegate="assignEmpty()">Assign Empty String/Array</button>
+  <button class="btn btn-info" click.delegate="assignGarbage()">Assign Garbage</button>
+  <button class="btn btn-info" click.delegate="randomizeOptions()">Randomize Options</button>
+  <a href="https://github.com/jdanyow/skeleton-navigation/blob/gh-pages/src/select-test.html" target="_blank">HTML for this page</a> |
+  <a href="https://github.com/jdanyow/skeleton-navigation/blob/gh-pages/src/select-test.js" target="_blank">javascript for this page</a> |
+  <a href="https://github.com/jdanyow/binding/blob/templating-binding-21/src/property-observation.js#L354" target="_blank">SelectValueObserver</a>
+
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-sm-6">
+        <h1>binding to strings</h1>
+
+        <h2>single-select</h2>
+        <div class="row">
+          <div class="col-sm-4">
+            <select value.bind="selectedColorName">
+              <option value="">Select a color</option>
+              <option repeat.for="color of colors" value.bind="color.name">${color.name}</option>
+            </select>
+          </div>
+          <div class="col-sm-8">
+            <strong>value:</strong>
+            <br/>${selectedColorName | stringify}
+          </div>
+        </div>
+
+        <h2>multi-select - assign</h2>
+        <div class="row">
+          <div class="col-sm-4">
+            <select value.bind="selectedColorNames" multiple size="10">
+              <option repeat.for="color of colors" value.bind="color.name">${color.name}</option>
+            </select>
+          </div>
+          <div class="col-sm-8">
+            <strong>value:</strong>
+            <br/>${selectedColorNames | stringify}
+          </div>
+        </div>
+
+        <h2>multi-select - push/pop</h2>
+        <div class="row">
+          <div class="col-sm-4">
+            <select value.bind="selectedColorNames2" multiple size="10">
+              <option repeat.for="color of colors" value.bind="color.name">${color.name}</option>
+            </select>
+          </div>
+          <div class="col-sm-8">
+            <strong>value:</strong>
+            <br/>${selectedColorNames2 | stringify:hack}
+          </div>
+        </div>
+      </div>
+
+      <div class="col-sm-6">
+        <h1>binding to objects</h1>
+
+        <h2>single-select</h2>
+        <div class="row">
+          <div class="col-sm-4">
+            <select value.bind="selectedColor">
+              <option value="">Select a color</option>
+              <option repeat.for="color of colors" model.bind="color">${color.name}</option>
+            </select>
+          </div>
+          <div class="col-sm-8">
+            <strong>value:</strong>
+            <br/>${selectedColor | stringify}
+          </div>
+        </div>
+
+        <h2>multi-select - assign</h2>
+        <div class="row">
+          <div class="col-sm-4">
+            <select value.bind="selectedColors" multiple size="10">
+              <option repeat.for="color of colors" model.bind="color">${color.name}</option>
+            </select>
+          </div>
+          <div class="col-sm-8">
+            <strong>value:</strong>
+            <br/>${selectedColors | stringify}
+          </div>
+        </div>
+
+        <h2>multi-select - push/pop</h2>
+        <div class="row">
+          <div class="col-sm-4">
+            <select value.bind="selectedColors2" multiple size="10">
+              <option repeat.for="color of colors" model.bind="color">${color.name}</option>
+            </select>
+          </div>
+          <div class="col-sm-8">
+            <strong>value:</strong>
+            <br/>${selectedColors2 | stringify:hack}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</template>

@@ -1,0 +1,1 @@
+module.exports = require("npm:entities@1.1.1/index");

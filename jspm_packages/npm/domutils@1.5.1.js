@@ -1,0 +1,1 @@
+module.exports = require("npm:domutils@1.5.1/index");

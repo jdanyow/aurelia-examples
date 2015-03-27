@@ -1,0 +1,1 @@
+module.exports = require("npm:regexp-quote@0.0.0/regexp-quote");

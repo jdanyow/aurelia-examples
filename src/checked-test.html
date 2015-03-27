@@ -1,0 +1,110 @@
+<template>
+  <div class="container">
+    <div class="row" style="margin-bottom: 5px">
+      <a href="https://github.com/jdanyow/aurelia-examples/blob/gh-pages/src/checked-test.html" target="_blank">HTML for this page</a> |
+      <a href="https://github.com/jdanyow/aurelia-examples/blob/gh-pages/src/checked-test.js" target="_blank">javascript for this page</a> |
+      <a href="https://github.com/aurelia/binding/blob/master/src/property-observation.js#L491" target="_blank">CheckedObserver</a>
+    </div>
+
+    <h1>
+      checkboxes
+      <button class="btn btn-info btn-sm" click.delegate="randomizeOptions()">Randomize Options</button>
+      <button class="btn btn-info btn-sm" click.delegate="randomizeSelection()">Randomize Selection</button>
+      <button class="btn btn-info btn-sm" click.delegate="deselectAll()">De-select All</button>
+    </h1>
+    <h3>checked.bind="arrayOfStrings"</h3>
+    <div class="row">
+      <div class="col-sm-6">
+        <label style="display: block">Choose:</label>
+        <label repeat.for="color of colors" css="background-color: ${color.hex};" class="swatch">
+          <input type="checkbox" checked.bind="$parent.selectedColorNames" value.bind="color.name" />
+          <span class="glyphicon glyphicon-ok" css="color: ${color.hex | invertColor}" />
+        </label>
+      </div>
+      <div class="col-sm-6">
+        <label style="display: block">Result:</label>
+        <div repeat.for="color of selectedColorNames" css="background-color: ${color};" class="swatch"></div>
+      </div>
+    </div>
+
+    <h3>checked.bind="arrayOfObjects"</h3>
+    <div class="row">
+      <div class="col-sm-6">
+        <label style="display: block">Choose:</label>
+        <label repeat.for="color of colors" css="background-color: ${color.hex};" class="swatch">
+          <input type="checkbox" model.bind="color" checked.bind="$parent.selectedColors" />
+          <span class="glyphicon glyphicon-ok" css="color: ${color.hex | invertColor}" />
+        </label>
+      </div>
+      <div class="col-sm-6">
+        <label style="display: block">Result:</label>
+        <div repeat.for="color of selectedColors" css="background-color: ${color.hex};" class="swatch"></div>
+      </div>
+    </div>
+
+    <h3>checked.bind="booleanProperty"</h3>
+    <div class="row">
+      <div class="col-sm-6">
+        <ul>
+          <li><label><input type="checkbox" checked.bind="checkedBooleanTest.a" />Option A</label></li>
+          <li><label><input type="checkbox" checked.bind="checkedBooleanTest.b" />Option B</label></li>
+          <li><label><input type="checkbox" checked.bind="checkedBooleanTest.c" />Option C</label></li>
+          <li><label><input type="checkbox" checked.bind="checkedBooleanTest.d" />Option D</label></li>
+        </ul>
+      </div>
+      <div class="col-sm-6">
+        { a: ${checkedBooleanTest.a}, b: ${checkedBooleanTest.b}, c: ${checkedBooleanTest.c}, d: ${checkedBooleanTest.d} }
+      </div>
+    </div>
+
+    <h1>
+      radios
+      <button class="btn btn-info btn-sm" click.delegate="randomizeOptions()">Randomize Options</button>
+      <button class="btn btn-info btn-sm" click.delegate="randomizeSelection()">Randomize Selection</button>
+      <button class="btn btn-info btn-sm" click.delegate="deselectAll()">De-select All</button>
+    </h1>
+    <h3>checked.bind="stringProperty"</h3>
+    <div class="row">
+      <div class="col-sm-6">
+        <label style="display: block">Choose:</label>
+        <label repeat.for="color of colors" css="background-color: ${color.hex};" class="swatch">
+          <input type="radio" name="string-test" value.bind="color.name" checked.bind="$parent.selectedColorName" />
+          <span class="glyphicon glyphicon-ok" css="color: ${color.hex | invertColor}" />
+        </label>
+      </div>
+      <div class="col-sm-6">
+        <label style="display: block">Result:</label>
+        <div css="background-color: ${selectedColorName};" class="swatch big"></div>
+      </div>
+    </div>
+
+    <h3>checked.bind="objectProperty"</h3>
+    <div class="row">
+      <div class="col-sm-6">
+        <label style="display: block">Choose:</label>
+        <label repeat.for="color of colors" css="background-color: ${color.hex};" class="swatch">
+          <input type="radio" name="object-test" model.bind="color" checked.bind="$parent.selectedColor" />
+          <span class="glyphicon glyphicon-ok" css="color: ${color.hex | invertColor}" />
+        </label>
+      </div>
+      <div class="col-sm-6">
+        <label style="display: block">Result:</label>
+        <div css="background-color: ${selectedColor.hex};" class="swatch big"></div>
+      </div>
+    </div>
+
+    <h3>checked.bind="booleanProperty"</h3>
+    <div class="row">
+      <div class="col-sm-6">
+        <ul>
+          <li><label><input type="radio" name="boolean-test" model.bind="null" checked.bind="radioBooleanTest" />null</label></li>
+          <li><label><input type="radio" name="boolean-test" model.bind="false" checked.bind="radioBooleanTest" />false</label></li>
+          <li><label><input type="radio" name="boolean-test" model.bind="true" checked.bind="radioBooleanTest" />true</label></li>
+        </ul>
+      </div>
+      <div class="col-sm-6">
+        ${radioBooleanTest | stringify}
+      </div>
+    </div>
+  </div>
+</template>

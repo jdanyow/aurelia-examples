@@ -1,0 +1,1 @@
+module.exports = require("npm:dom-serializer@0.1.0/index");

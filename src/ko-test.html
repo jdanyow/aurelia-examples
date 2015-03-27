@@ -1,0 +1,8 @@
+<template>
+  <input value.bind="insertIndex" />
+  <input value.bind="value" />
+  <button click.delegate="insert()">Insert</button>
+  <ol>
+    <li repeat.for="color of colors">${color.name}</li>
+  </ol>
+</template>

@@ -44,3 +44,33 @@ section {
 .pictureDetail {
     max-width: 425px;
 }
+
+.swatch {
+  width: 25px;
+  height: 25px;
+  display: inline-block;
+  cursor: pointer;
+  margin-bottom: -5px;
+}
+
+.swatch > input {
+  display: none;
+}
+
+.swatch > span {
+  width: 25px;
+  height: 25px;
+  font-size: 8px;
+  text-align: right;
+  vertical-align: bottom;
+  display: none;
+}
+
+.swatch > input:checked ~ span {
+  display: inherit;
+}
+
+.swatch.big {
+  width: 150px;
+  height: 150px;
+}
